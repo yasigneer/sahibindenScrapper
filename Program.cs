@@ -28,10 +28,12 @@ namespace sahibinden
             foreach(var product in products)
             {
                 mean += Int32.Parse(String.Join("", product.Price.Split(".")));
+                //split price from dots and join after joinin turn into integer and sum
                 Console.WriteLine(product.Title + "         " + product.Price);
                 writer.WriteLine(product.Title + "         " + product.Price);
             }
             mean = mean / products.Count;
+            // take average of total price
             Console.WriteLine("Ortalama Fiyat: " + mean);
         }
         public static void GenerateProduct(string url)
