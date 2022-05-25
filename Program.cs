@@ -18,17 +18,21 @@ namespace sahibinden
             HtmlDocument document = web.Load(url);
             TextWriter writer = new StreamWriter("D:\\products.txt");
             var ParentNode = document.DocumentNode.SelectNodes("/html/body/div[5]/div[3]/div/div[3]/div[3]/ul/li/a");
+            int mean = 0;
             //reached products links from uibox-showcase sahibinden homepage with full xpath
-            foreach(var node in ParentNode)
+            foreach (var node in ParentNode)
             {
                 GenerateProduct(url + node.GetAttributeValue("href", "").ToString());
                 //used to create products
             }
             foreach(var product in products)
             {
+                mean += Int32.Parse(String.Join("", product.Price.Split(".")));
                 Console.WriteLine(product.Title + "         " + product.Price);
                 writer.WriteLine(product.Title + "         " + product.Price);
             }
+            mean = mean / products.Count;
+            Console.WriteLine("Ortalama Fiyat: " + mean);
         }
         public static void GenerateProduct(string url)
         {
