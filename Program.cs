@@ -18,7 +18,7 @@ namespace sahibinden
             HtmlDocument document = web.Load(url);
             TextWriter writer = new StreamWriter("D:\\products.txt");
             var ParentNode = document.DocumentNode.SelectNodes("/html/body/div[5]/div[3]/div/div[3]/div[3]/ul/li/a");
-            //reached products links from uibox-showcase from sahibinden homepage with full xpath
+            //reached products links from uibox-showcase sahibinden homepage with full xpath
             foreach(var node in ParentNode)
             {
                 GenerateProduct(url + node.GetAttributeValue("href", "").ToString());
@@ -51,7 +51,7 @@ namespace sahibinden
                 products.Add(product);
             }catch{
                 return;
-                // in case of catching exceptions do not do anything to maintaing program flow
+                // in case of catching exceptions do not do anything to maintain program flow
             }
         }
     }
